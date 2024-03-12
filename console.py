@@ -4,7 +4,7 @@ import sys
 import json
 from models.base_model import BaseModel
 from models import storage
-from models.user  import User
+from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
@@ -22,33 +22,38 @@ newClasses = [
         "Amenity"
         ]
 
+
 class HBNBCommand(cmd.Cmd):
-    """entry point of the command interpreter: """
+    """entry point of the command interpreter:"""
 
     prompt = '(hbnb) '
+
     def emptyline(self):
         """
         wont execute if empty line + ENTER is clicked
         """
-        pass
+    pass
+
     def do_EOF(self, line):
         """ end of file function"""
         return True
+
     def do_quit(self, args):
         """ quit command"""
         sys.exit(1)
 
     def do_help(self, arg: str):
         return super().do_help(arg)
-    
+
     def do_create(self, line):
-        """ Creates a new instance of BaseModel, 
+        """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id
         Args:
             args: argument passed
         """
         line_list = line.split(" ")
-        if len(line_list) ==  1 and line_list[0] == "":
+
+        if len(line_list) == 1 and line_list[0] == "":
             print("** class name missing **")
         elif line_list[0] not in newClasses:
             print("** class doesn't exist **")
@@ -89,33 +94,32 @@ class HBNBCommand(cmd.Cmd):
             args: arg passed
         """
         line_list = line.split(" ")
-        if len(line_list) ==  1 and line_list[0] == "":
+        if len(line_list) == 1 and line_list[0] == "":
             print("** class name missing **")
         elif len(line_list) >= 1:
 
             if line_list[0] not in newClasses:
                 print("** class doesn't exist ** ")
             else:
-                objects =  storage.all()
+                objects = storage.all()
                 obj_id = line_list[0] + "." + str(line_list[1])
-                
+
                 if obj_id in objects.keys():
                     del(objects[obj_id])
                     storage.save()
-                    
                 else:
                     print("** instance id missing **")
-                    
+
         else:
             print("** no instance found **")
-            
+
     def do_all(self, line):
         """ Prints all string representation of all instances
         based or not on the class name"""
         objs_list = []
         objs = storage.all()
         line_list = line.split(" ")
-        
+
         if len(line_list) == 1 and line_list[0] == "":
             for val in objs.values():
                 objs_list.append(str(val))
@@ -124,26 +128,27 @@ class HBNBCommand(cmd.Cmd):
             for obj in objs.keys():
                 if obj.split(".")[0] == line_list[0]:
                     objs_list.append(str(objs[obj]))
-                    
+
         else:
             print("** class doesn't exist **")
-              
+
     def do_update(self, line):
         """
-        Updates an instance 
+        Updates an instance
         based on the class name and id by adding or updating attribute
         """
         objs = storage.all()
         line_list = line.split(" ")
-        if len(line_list) == 1 and  line_list[0] == "":
+        if len(line_list) == 1 and line_list[0] == "":
             print("** class name missing **")
         elif line_list[0] in newClasses:
             if len(line_list) < 2:
                 print("** instane id missing **")
-            elif line_list[1] in [name_id.split(".")[1] for name_id in objs.keys()]:
+            elif (line_list[1] in [name_id.split(".")[1]
+                  for name_id in objs.keys()]):
                 name_id = line[0] + "." + line[1]
                 obj = objs[name_id]
-                
+
                 if len(line_list) < 3:
                     print("** attribute name missing **")
                 else:
@@ -151,7 +156,8 @@ class HBNBCommand(cmd.Cmd):
                         print("** value missing **")
                     else:
                         try:
-                            setattr(obj, line_list[2], eval(line_list[3].strip('"')))
+                            setattr(obj, line_list[2],
+                                    eval(line_list[3].strip('"')))
                         except Exception:
                             setattr(obj, line_list[2], line_list[3].strip('"'))
                         storage.save()
@@ -159,8 +165,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
         else:
             print("** class doesn't exist **")
-        
-        
+
     def default(self, line):
         """
         default methods
@@ -221,10 +226,12 @@ class HBNBCommand(cmd.Cmd):
                                 attr + " " + value
                                 )
                         self.do_update(update_str)
-      
-# if __name__ == '__main__':
-#      HBNBCommand().cmdloop()   
-    
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
+
+
 all_objs = storage.all()
 print("-- Reloaded objects --")
 for obj_id in all_objs.keys():
