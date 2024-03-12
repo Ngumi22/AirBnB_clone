@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Define class FileStorage Module
+Define class FileStorage Module
 """
 import json
 from models.base_model import BaseModel
@@ -9,8 +9,11 @@ import os
 
 
 class FileStorage:
-    """
+    """Represents the file storage engine
         Serializes instances to JSON file and deserializes to JSON file.
+        Attributes:
+        __file_path (str): The name of the file to save objects to.
+        __objects (dict): A dictionary of instantiated objects.
     """
     __file_path = "file.json"
     __objects = {}

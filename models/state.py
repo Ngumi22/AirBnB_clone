@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" The state that the user in in"""
+"""Defines the state class"""
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
+    """Represents the state
+    attributes:
+    name (str): Name of the state
     """
-    class state inherits from basemodel
-    """
-    def __init__(self):
-        self.name = ""
+    name = ""

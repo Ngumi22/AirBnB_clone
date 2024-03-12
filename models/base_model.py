@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""
-BaseModel - Module
-BaseModel Parent class,
- """
+
+"""Defines the Base Class"""
 
 import uuid
 from datetime import datetime
@@ -11,6 +9,8 @@ import models
 
 class BaseModel:
     """
+    Represents the Base Class
+
     BaseModel class Parent class to take care of the initialization,
     serialization and deserialization of instances
     """
