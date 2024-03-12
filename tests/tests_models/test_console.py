@@ -1,4 +1,5 @@
-iimport unittest
+#!/usr/bin/python3
+import unittest
 from io import StringIO
 from unittest.mock import patch
 from console import HBNBCommand

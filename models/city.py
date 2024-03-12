@@ -8,4 +8,4 @@ class City(BaseModel):
     def __init__(self):
         """ attributes: state_id, name"""
         self.state_id = ""
-        self.name =  ""
+        self.name = ""

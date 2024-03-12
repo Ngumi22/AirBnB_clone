@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-o""" Amenitiy"""
+""" Amenity"""
 from models.base_model import BaseModel
 
 
