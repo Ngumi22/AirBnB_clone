@@ -8,7 +8,7 @@ class User(BaseModel):
     class user:
         attributes: email, password, first_name, last_name
     """
-        email = ""
-        password = ""
-        first_name = ""
-        last_name = ""
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
