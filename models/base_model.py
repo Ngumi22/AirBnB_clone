@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
 """Defines the Base Class"""
-
 import models
-from uuid import uuid4
+from uuid
 from datetime import datetime
 
 
@@ -15,7 +14,11 @@ class BaseModel:
     serialization and deserialization of instances
     """
     def __init__(self, *args, **kwargs):
-        """Initialization of a BaseModel instance"""
+        """Initialization of a BaseModel instance
+        Args:
+        *args (any): Unused.
+        **kwargs (dict): Key/value pairs of attributes.
+        """
         if (len(kwargs) == 0):
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
