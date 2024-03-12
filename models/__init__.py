@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" importing modules and calling reload()"""
+"""Magic file for methods"""
 from models.engine.file_storage import FileStorage
 
 
