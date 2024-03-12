@@ -13,4 +13,4 @@ class TestFileStorage(unittest.TestCase):
     def test_all(self):
         """ checks if file retuned a dict"""
         inst = self.file_instance.all()
-        self.assertTrue(type(inst), dict)
+        self.assertTrue(isinstance(inst, dict))

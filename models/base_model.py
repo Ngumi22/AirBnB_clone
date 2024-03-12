@@ -51,7 +51,7 @@ class BaseModel:
         """Return dictionary representation of BaseModel class."""
         nw_dct = dict(self.__dict__)
         nw_dct['__class__'] = self.__class__.__name__
-        nw_dct['created_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        nw_dct['updated_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        nw_dct['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        nw_dct['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
 
         return (nw_dct)
