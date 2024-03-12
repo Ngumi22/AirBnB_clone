@@ -47,7 +47,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             new_instance = new_classes[splitline[0]]()
-            print("{} created".format(splitline[0]))
             print(new_instance.id)
             new_instance.save()
 
